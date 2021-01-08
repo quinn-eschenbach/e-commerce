@@ -1,10 +1,10 @@
 import React from 'react'
-import { Container, Typography, Button, Grid} from '@material-ui/core'
-
+import { Container, Typography, Button, Grid, IconButton} from '@material-ui/core'
+import { ArrowForward } from '@material-ui/icons'
 import useStyles from './styles'
 import CartItem from './CartItem/CartItem'
 
-const Cart = ({ cart, handleRemoveFromCart, handleUpdateCartQty, handleEmptyCart}) => {
+const Cart = ({ cart, handleRemoveFromCart, handleUpdateCartQty, handleEmptyCart, onClick}) => {
     const classes = useStyles()
 
     const EmptyCart = () =>(
@@ -37,6 +37,9 @@ const Cart = ({ cart, handleRemoveFromCart, handleUpdateCartQty, handleEmptyCart
 
     return (
         <Container>
+            <IconButton aria-label="Close Cart" color="inherit" onClick={onClick}>
+                <ArrowForward/>
+            </IconButton>            
             <div className={classes.toolbar}/>
             <Typography className={classes.title} variant="h3" gutterBottom>Your Shopping Cart</Typography>
             {!cart.line_items.length ? <EmptyCart /> : <FilledCart />}

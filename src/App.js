@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react'
 import { commerce } from "./lib/commerce";
 import {Products, Navbar, Cart} from './components'
 import { Drawer, IconButton, Badge } from "@material-ui/core";
-import { ShoppingCart } from "@material-ui/icons"
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -66,16 +65,12 @@ function App() {
 
     return (
         <div>
-            <Navbar />
-            <IconButton aria-label="Show cart Items" color="inherit" className={classes.openCart} onClick={close}>
-                    <Badge badgeContent={cart.total_items} color="secondary">
-                        <ShoppingCart />
-                    </Badge>
-                </IconButton>
+            <Navbar onClick={close} cart={cart} />
             <Products products={products} onAddToCart={handleAddToCart}/>
             <Drawer variant="persistent" anchor="right" open={open} width="240">                
                 <Cart 
                     cart={cart} 
+                    onClick={close}
                     handleRemoveFromCart={handleRemoveFromCart}
                     handleUpdateCartQty={handleUpdateCartQty}
                     handleEmptyCart={handleEmptyCart}
