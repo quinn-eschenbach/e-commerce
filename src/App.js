@@ -10,9 +10,6 @@ const useStyles = makeStyles((theme) => ({
       zIndex: 10000,
       right: 20
     },
-    drawer:{
-        width: 240
-    }
   }));
 
 
@@ -67,7 +64,7 @@ function App() {
         <div>
             <Navbar onClick={close} cart={cart} />
             <Products products={products} onAddToCart={handleAddToCart}/>
-            <Drawer variant="persistent" anchor="right" open={open} width="240">                
+            <Drawer variant="persistent" anchor="right" open={open} className={classes.drawer}>                
                 <Cart 
                     cart={cart} 
                     onClick={close}

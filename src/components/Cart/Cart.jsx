@@ -15,7 +15,7 @@ const Cart = ({ cart, handleRemoveFromCart, handleUpdateCartQty, handleEmptyCart
         <>
             <Grid container spacing={3}>
                 {cart.line_items.map((item)=>(
-                    <Grid item xs={12} sm={12} key={item.id}>
+                    <Grid item xs={12} key={item.id}>
                         <CartItem item={item} onRemoveFromCart={handleRemoveFromCart} onUpdateCartQty={handleUpdateCartQty}/>
                     </Grid>
                 ))}
@@ -36,8 +36,8 @@ const Cart = ({ cart, handleRemoveFromCart, handleUpdateCartQty, handleEmptyCart
 
 
     return (
-        <Container>
-            <IconButton aria-label="Close Cart" color="inherit" onClick={onClick}>
+        <Container fixed>
+            <IconButton aria-label="Close Cart" color="inherit" onClick={onClick} className={classes.buttonBack}>
                 <ArrowForward/>
             </IconButton>            
             <div className={classes.toolbar}/>

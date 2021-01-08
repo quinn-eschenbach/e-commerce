@@ -26,7 +26,4 @@ export default makeStyles((theme) => ({
     width: '100%',
     justifyContent: 'space-between',
   },
-  buttonBack:{
-    verticalAlign: 'middle'
-  }
 }));
