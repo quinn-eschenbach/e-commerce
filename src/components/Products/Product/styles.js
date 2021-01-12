@@ -19,5 +19,10 @@ export default makeStyles(()=>({
     description: {
       height: 150,
       overflow: 'auto'
-    }
+    },
+    categories:{
+      display:"flex",
+      height: "1em",
+    },
+    
 }))

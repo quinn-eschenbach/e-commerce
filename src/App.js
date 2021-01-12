@@ -2,15 +2,8 @@ import React, {useState, useEffect} from 'react'
 import { commerce } from "./lib/commerce";
 import {Products, Navbar, Cart} from './components'
 import { Drawer, IconButton, Badge } from "@material-ui/core";
-import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme) => ({
-    openCart: {
-      position: 'fixed',
-      zIndex: 10000,
-      right: 20
-    },
-  }));
+
 
 
 
@@ -19,15 +12,17 @@ function App() {
     const [cart, setCart] = useState({})
     const [open, setOpen] = useState(false);
 
-    const classes = useStyles()
+   
 
     const fetchProducts = async () => {
         const {data} = await commerce.products.list()
         setProducts(data)
+        console.log(products)
     }
 
     const fetchCart = async () => {
         setCart(await commerce.cart.retrieve())
+        
     }
 
     const handleAddToCart = async(productId, quantity) => {
@@ -64,7 +59,7 @@ function App() {
         <div>
             <Navbar onClick={close} cart={cart} />
             <Products products={products} onAddToCart={handleAddToCart}/>
-            <Drawer variant="persistent" anchor="right" open={open} className={classes.drawer}>                
+            <Drawer variant="persistent" anchor="right" open={open}>                
                 <Cart 
                     cart={cart} 
                     onClick={close}

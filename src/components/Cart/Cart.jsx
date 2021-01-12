@@ -13,9 +13,9 @@ const Cart = ({ cart, handleRemoveFromCart, handleUpdateCartQty, handleEmptyCart
 
     const FilledCart = () =>(
         <>
-            <Grid container spacing={3}>
+            <Grid className={classes.grid} container spacing={3}>
                 {cart.line_items.map((item)=>(
-                    <Grid item xs={12} key={item.id}>
+                    <Grid xs={12} key={item.id}>
                         <CartItem item={item} onRemoveFromCart={handleRemoveFromCart} onUpdateCartQty={handleUpdateCartQty}/>
                     </Grid>
                 ))}
@@ -24,7 +24,7 @@ const Cart = ({ cart, handleRemoveFromCart, handleUpdateCartQty, handleEmptyCart
                 <Typography variant="h4">
                     Subtotal: {cart.subtotal.formatted_with_symbol}
                 </Typography>
-                <div>
+                <div className={classes.buttonWrapper}>
                     <Button className={classes.emptyButton} size="large" type="button" variant="contained" color="secondary" onClick={handleEmptyCart}>Empty Cart</Button>
                     <Button className={classes.checkoutButton} size="large" type="button" variant="contained" color="primary">Checkout</Button>
                 </div>
@@ -36,12 +36,13 @@ const Cart = ({ cart, handleRemoveFromCart, handleUpdateCartQty, handleEmptyCart
 
 
     return (
-        <Container fixed>
-            <IconButton aria-label="Close Cart" color="inherit" onClick={onClick} className={classes.buttonBack}>
+        <Container fixed className={classes.drawer}>
+            <div>
+                <IconButton aria-label="Close Cart" color="inherit" onClick={onClick} className={classes.buttonBack}>
                 <ArrowForward/>
-            </IconButton>            
-            <div className={classes.toolbar}/>
-            <Typography className={classes.title} variant="h3" gutterBottom>Your Shopping Cart</Typography>
+            </IconButton> 
+            </div>
+            
             {!cart.line_items.length ? <EmptyCart /> : <FilledCart />}
         </Container>
     )

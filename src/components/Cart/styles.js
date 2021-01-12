@@ -7,15 +7,11 @@ export default makeStyles((theme) => ({
   },
   emptyButton: {
     minWidth: '150px',
-    [theme.breakpoints.down('xs')]: {
-      marginBottom: '5px',
-    },
-    [theme.breakpoints.up('xs')]: {
-      marginRight: '20px',
-    },
+    marginBottom: 5
   },
   checkoutButton: {
     minWidth: '150px',
+    marginBottom: 5
   },
   link: {
     textDecoration: 'none',
@@ -25,5 +21,29 @@ export default makeStyles((theme) => ({
     marginTop: '10%',
     width: '100%',
     justifyContent: 'space-between',
+    flexDirection: "column",
+    alignItems: "center",
+    marginTop: "auto",
+    marginBottom: 20
   },
+  buttonWrapper:{
+    marginTop: 10,
+      width: "100%",
+      display: "flex",
+      justifyContent: "space-evenly",
+  },
+  drawer:{
+    width: 400,
+    display: 'flex',
+    flexDirection: 'column',
+    height: "100%",
+  },
+  grid:{
+    overflowX: "hidden",
+    marginBottom: 20
+  },
+  buttonBack:{
+    height: 65,
+    width: 65
+  }
 }));

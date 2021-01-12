@@ -21,7 +21,13 @@ const Product = ({product, onAddToCart}) => {
                         {product.price.formatted_with_symbol}
                     </Typography>
                 </div>
-                <Typography className={classes.description} dangerouslySetInnerHTML={{__html: product.description}} variant="body2" color="textSecondary" />
+                {/*<Typography className={classes.description} dangerouslySetInnerHTML={{__html: product.description}} variant="body2" color="textSecondary" />*/}
+                <div className={classes.categories}>
+                    {product.categories.map(category=>(
+                    <Typography>{category.name},</Typography>
+                ))}
+                </div>
+                
             </CardContent>
             <CardActions>
                 <IconButton aria-label="Add to Card" onClick={()=> onAddToCart(product.id, 1)}>

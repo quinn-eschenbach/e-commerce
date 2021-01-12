@@ -7,7 +7,7 @@ const CartItem = ({item, onRemoveFromCart, onUpdateCartQty}) => {
     const classes = useStyles()
 
     return (
-        <Card>
+        <Card className={classes.card}>
             <CardContent className={classes.cardContent}>
                 <Typography variant="h4">
                     {item.name}
