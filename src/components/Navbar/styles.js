@@ -15,7 +15,7 @@ export default makeStyles((theme) => ({
     flexGrow: 1,
     alignItems: 'center',
     display: 'flex',
-    textDecoration: 'none',
+    textDecoration: 'none'
   },
   image: {
     marginRight: '10px',
@@ -27,7 +27,24 @@ export default makeStyles((theme) => ({
     },
   },
   grow: {
-    flexGrow: 1,
+    display: 'flex',
+    justifyContent: 'space-evenly',
+    width: '100%',
+    height: 65,
+    alignItems:'center',
+    padding: '0 5%'
+  },
+  navitem:{
+    display: 'flex',
+    justifyContent: 'center',
+    height: 65,
+    alignItems: 'center',
+    padding: '0 20px',
+    cursor: 'pointer',
+    borderBottom: '5px solid transparent',
+    "&:hover":{
+      borderBottom: '5px solid black'
+    }
   },
   search: {
     position: 'relative',

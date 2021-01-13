@@ -16,7 +16,11 @@ const Navbar = ({onClick, cart}) => {
                         <img src={logo} alt="Agueta" height="25px" className={classes.image}/>
                         AGUETA
                     </Typography>
-                    <div className={classes.grow} />
+                    <div className={classes.grow}> 
+                        <div className={classes.navitem}><Typography>Home</Typography></div>
+                        <div className={classes.navitem}><Typography>Shop</Typography></div>
+                        <div className={classes.navitem}><Typography>About Us</Typography></div>
+                    </div>
                     <div className={classes.button} >
                     <IconButton aria-label="Show cart Items" color="inherit" className={classes.openCart} onClick={onClick}>
                     <Badge badgeContent={cart.total_items} color="secondary">

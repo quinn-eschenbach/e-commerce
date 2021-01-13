@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import { commerce } from "./lib/commerce";
-import {Products, Navbar, Cart} from './components'
+import {Products, Navbar, Cart, ProductPage} from './components'
 import { Drawer, IconButton, Badge } from "@material-ui/core";
 
 
-
+const style = {
+    height: 65
+}
 
 
 function App() {
@@ -17,7 +19,7 @@ function App() {
     const fetchProducts = async () => {
         const {data} = await commerce.products.list()
         setProducts(data)
-        console.log(products)
+        console.log(data)
     }
 
     const fetchCart = async () => {
@@ -58,7 +60,7 @@ function App() {
     return (
         <div>
             <Navbar onClick={close} cart={cart} />
-            <Products products={products} onAddToCart={handleAddToCart}/>
+            <div style={style}/>
             <Drawer variant="persistent" anchor="right" open={open}>                
                 <Cart 
                     cart={cart} 
@@ -68,6 +70,11 @@ function App() {
                     handleEmptyCart={handleEmptyCart}
                 />
             </Drawer>
+            <main>
+                <ProductPage product={products[0]}/>
+            </main>
+            <Products products={products} onAddToCart={handleAddToCart}/>
+            
            
         </div>
     )

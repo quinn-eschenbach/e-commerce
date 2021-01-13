@@ -5,6 +5,7 @@ import Product from './Product/Product'
 
 import useStyles from './styles'
 
+
 /*const products = [
     { id:1, name : 'Shoes', description: 'Running shoes' , price:'$80', image:'https://picsum.photos/800'},
     { id:2, name : 'MacBoook', description: 'Fancy Apple stuff' , price:'$150', image:'https://picsum.photos/700'},
@@ -17,8 +18,7 @@ const Products = ({products, onAddToCart})=>{
     const classes = useStyles()
 
     return(
-        <main className={classes.content}>
-        <div className={classes.toolbar}/>
+       <>
         <Grid container justify="center" spacing={4}>
             {
                 products.map((product)=>(
@@ -28,7 +28,7 @@ const Products = ({products, onAddToCart})=>{
                 ))
             }
         </Grid>
-    </main>
+    </>
     )    
 }
 
