@@ -42,6 +42,8 @@ export default makeStyles((theme) => ({
     padding: '0 20px',
     cursor: 'pointer',
     borderBottom: '5px solid transparent',
+    textDecoration: 'none',
+    color: 'black',
     "&:hover":{
       borderBottom: '5px solid black'
     }

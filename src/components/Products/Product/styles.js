@@ -24,5 +24,9 @@ export default makeStyles(()=>({
       display:"flex",
       height: "1em",
     },
+    link:{
+      textDecoration: 'none',
+      color: 'black'
+    }
     
 }))

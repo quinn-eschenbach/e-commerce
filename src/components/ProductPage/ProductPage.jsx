@@ -1,19 +1,22 @@
 import React from 'react'
 import { Card, CircularProgress, CardContent, CardActions, Typography, Button, Grid, Accordion, AccordionDetails, AccordionSummary } from "@material-ui/core";
 import { LocalShipping, Language, Lock, ExpandMore, AddShoppingCart } from "@material-ui/icons"
+import { useParams } from "react-router-dom"
+import useStyles from "./styles"
 
 import Carousel from 'react-material-ui-carousel'
 
-const ProductPage = ({product}) => {
-    const styleImg={
-        maxHeight: "70vh",
-        width: "100%"
-    }
-    const styleIcons = {
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center"
-    }
+const ProductPage = ({products}) => {
+
+    const classes = useStyles();
+
+    let {id} = useParams()
+
+    const productsFilterd = products.filter(product => (
+        product.id == id
+    ))
+
+    const product = productsFilterd[0]
 
     const pageLoading = ()=> (
         <div style={{
@@ -34,7 +37,7 @@ const ProductPage = ({product}) => {
                     <Carousel autoPlay={false}>
                         {
                             product.assets.map( asset =>(
-                                <img src={asset.url} style={styleImg}/>
+                                <div key={asset.id} src={asset.url} style={{ height: '70vh',backgroundImage: `url("${asset.url}")`, backgroundRepeat: 'no-repeat', backgroundPosition:'center', backgroundSize: 'contain'}}/>
                             ))
                         }
                     </Carousel>
@@ -72,15 +75,15 @@ const ProductPage = ({product}) => {
                                     justify="center"
                                     alignItems="center"
                                 >
-                                    <Grid item xs={4} style={styleIcons}>
+                                    <Grid item xs={4} style={classes.icon}>
                                         <Lock />
                                         <Typography>Sichere Bezahlung</Typography>
                                     </Grid>
-                                    <Grid item xs={4} style={styleIcons}>
+                                    <Grid item xs={4} style={classes.icon}>
                                         <LocalShipping />
                                         <Typography>schneller Versand</Typography>
                                     </Grid>
-                                    <Grid item xs={4} style={styleIcons}>
+                                    <Grid item xs={4} style={classes.icon}>
                                         <Language/>
                                         <Typography>weltweite Lieferung</Typography>
                                     </Grid>
@@ -97,9 +100,7 @@ const ProductPage = ({product}) => {
                                 <Typography>Beschreibung</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
-                                <Typography>
-                                    <Typography dangerouslySetInnerHTML={{__html: product.description}} variant="body2"/>
-                                </Typography>
+                                <Typography dangerouslySetInnerHTML={{__html: product.description}} variant="body2"/>
                             </AccordionDetails>
                         </Accordion>
                         <Accordion>
@@ -138,7 +139,8 @@ const ProductPage = ({product}) => {
 
     return (
         <>
-            {product ? fullPage(): pageLoading()}
+            {product && product.id ? fullPage(): pageLoading()}
+            {console.log(product)}
         </>
     )
 }

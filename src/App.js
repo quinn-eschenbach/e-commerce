@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import { commerce } from "./lib/commerce";
-import {Products, Navbar, Cart, ProductPage} from './components'
-import { Drawer, IconButton, Badge } from "@material-ui/core";
+import { commerce } from "./lib/commerce"
+import { HomePage, ShopPage, AboutPage, Navbar, Cart, ProductPage, Products} from './components'
+import { Drawer, IconButton, Badge } from "@material-ui/core"
+import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 
 
 const style = {
@@ -59,6 +60,7 @@ function App() {
 
     return (
         <div>
+        <Router>
             <Navbar onClick={close} cart={cart} />
             <div style={style}/>
             <Drawer variant="persistent" anchor="right" open={open}>                
@@ -70,12 +72,27 @@ function App() {
                     handleEmptyCart={handleEmptyCart}
                 />
             </Drawer>
-            <main>
-                <ProductPage product={products[0]}/>
+            <main style={{marginTop: 65}}>
+                
+                    <Switch>
+                    <Route exact path="/">
+                        <HomePage/>
+                    </Route>
+                    <Route exact path="/about">
+                        <AboutPage/>
+                    </Route>
+                    <Route exact path="/shop">
+                        <ShopPage products={products} handleAddToCart={handleAddToCart}/>
+                    </Route>
+                    <Route exact path="/product/:id">
+                        <ProductPage products={products} />
+                    </Route>
+                </Switch>
+                
+                
+                {/*<ProductPage product={products[0]}/>*/}
             </main>
-            <Products products={products} onAddToCart={handleAddToCart}/>
-            
-           
+        </Router>
         </div>
     )
 }
