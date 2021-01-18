@@ -32,9 +32,9 @@ const Product = ({product, onAddToCart}) => {
                     
                 </CardContent>
                 <CardActions>
-                    <IconButton aria-label="Add to Card" onClick={()=> onAddToCart(product.id, 1)}>
+                    {/*<IconButton aria-label="Add to Card" onClick={()=> onAddToCart(product.id, 1)}>
                         <AddShoppingCart/>
-                    </IconButton>
+                        </IconButton>*/}
                 </CardActions>
             </Card>
         </Link>

@@ -59,40 +59,39 @@ function App() {
     }, [])  
 
     return (
-        <div>
-        <Router>
-            <Navbar onClick={close} cart={cart} />
-            <div style={style}/>
-            <Drawer variant="persistent" anchor="right" open={open}>                
-                <Cart 
-                    cart={cart} 
-                    onClick={close}
-                    handleRemoveFromCart={handleRemoveFromCart}
-                    handleUpdateCartQty={handleUpdateCartQty}
-                    handleEmptyCart={handleEmptyCart}
-                />
-            </Drawer>
-            <main style={{marginTop: 65}}>
-                
+        <div style={{backgroundColor:"#F5F5F5"}}>
+            <Router>
+                <Navbar onClick={close} cart={cart} />
+                <div style={style}/>
+                <Drawer variant="persistent" anchor="right" open={open}>                
+                    <Cart 
+                        cart={cart} 
+                        onClick={close}
+                        handleRemoveFromCart={handleRemoveFromCart}
+                        handleUpdateCartQty={handleUpdateCartQty}
+                        handleEmptyCart={handleEmptyCart}
+                    />
+                </Drawer>
+                <main>                   
                     <Switch>
-                    <Route exact path="/">
-                        <HomePage/>
-                    </Route>
-                    <Route exact path="/about">
-                        <AboutPage/>
-                    </Route>
-                    <Route exact path="/shop">
-                        <ShopPage products={products} handleAddToCart={handleAddToCart}/>
-                    </Route>
-                    <Route exact path="/product/:id">
-                        <ProductPage products={products} />
-                    </Route>
-                </Switch>
-                
-                
-                {/*<ProductPage product={products[0]}/>*/}
-            </main>
-        </Router>
+                        <Route exact path="/">
+                            <HomePage products={products.slice(0,4)}/>
+                        </Route>
+                        <Route exact path="/about">
+                            <AboutPage/>
+                        </Route>
+                        <Route exact path="/shop">
+                            <ShopPage products={products} handleAddToCart={handleAddToCart}/>
+                        </Route>
+                        <Route exact path="/product/:id">
+                            <ProductPage products={products} />
+                        </Route>
+                    </Switch>
+                    
+                    
+                    {/*<ProductPage product={products[0]}/>*/}
+                </main>
+            </Router>
         </div>
     )
 }

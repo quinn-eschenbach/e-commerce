@@ -1,5 +1,5 @@
 import React from "react"
-import { Grid } from '@material-ui/core'
+import { Grid, Grow } from '@material-ui/core'
 
 import Product from './Product/Product'
 
@@ -22,9 +22,12 @@ const Products = ({products, onAddToCart})=>{
         <Grid container justify="center" spacing={4}>
             {
                 products.map((product)=>(
-                    <Grid item key={product.id} xs={12} sm={6} lg={3}>
-                        <Product product={product} onAddToCart={onAddToCart}/>
-                    </Grid>
+                    <Grow in="true">
+                        <Grid item key={product.id} xs={12} sm={6} lg={3}>
+                            <Product product={product} onAddToCart={onAddToCart}/>
+                        </Grid>
+                    </Grow>
+                    
                 ))
             }
         </Grid>

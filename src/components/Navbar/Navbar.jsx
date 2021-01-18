@@ -14,7 +14,6 @@ const Navbar = ({onClick, cart}) => {
             <AppBar position="fixed" className={classes.appBar} color="inherit">
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
-                        <img src={logo} alt="Agueta" height="25px" className={classes.image}/>
                         AGUETA
                     </Typography>
                     <div className={classes.grow}> 

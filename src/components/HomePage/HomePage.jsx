@@ -1,9 +1,26 @@
 import React from 'react'
+import Carousel from 'react-material-ui-carousel'
+import HeroCarousel from './../HeroCarousel/HeroCarousel'
+import Products from './../Products/Products'
+import { Typography, Divider } from '@material-ui/core'
 
-const HomePage = () => {
+import useStyles from "./styles"
+
+const HomePage = ({products}) => {
+
+    const classes = useStyles();
+
     return (
         <div>
-            <h1>Home Page</h1>
+            <HeroCarousel />
+            
+            <div className={classes.mainSection}>
+                <Typography variant="h4" className={classes.topProducts}>Agueta empfiehlt:</Typography> 
+                <Divider className={classes.divider} />               
+                <Products products={products}/>
+                <Divider className={classes.divider} />
+            </div>
+            
         </div>
     )
 }
